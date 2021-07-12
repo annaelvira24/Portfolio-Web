@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 
 import HomePage from './pages/HomePage';
+import About from './pages/About';
+
 
 function App() {
   return (
@@ -15,11 +17,11 @@ function App() {
       <Router>
         <div>
           <Switch>
-              <Route path="/">
+              <Route exact path="/">
                 <HomePage/>
               </Route>
               <Route path="/about">
-                <HomePage/>
+                <About/>
               </Route>
             </Switch>
           </div>

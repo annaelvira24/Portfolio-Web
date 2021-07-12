@@ -3,7 +3,7 @@ import Typewriter from 'typewriter-effect';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelopeSquare, faUserCircle, faGlobe, faCopy, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeSquare, faUserCircle, faGlobe, faCopy} from '@fortawesome/free-solid-svg-icons';
 import { ButtonHomePage } from '../components/Button';
 import avatar from '../assets/img/anna-avatar.svg';
 
@@ -124,7 +124,7 @@ const ButtonsContainer = styled.div`
     display: flex;
     margin: 5px 0px 0px 30px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     @media only screen and (max-width: 1060px){
         margin: 5px 5px 0px 20px;

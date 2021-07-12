@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '../assets/jss/Colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = styled.button`
