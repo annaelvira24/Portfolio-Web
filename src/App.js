@@ -14,7 +14,7 @@ import Social from './pages/Social';
 function App() {
   return (
     <div className="App">
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
           <Switch>
               <Route exact path="/" component={HomePage}/>
               <Route exact path="/about" component={About}/>
