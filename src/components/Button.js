@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 
 export const Button = styled.button`
     color: white;
@@ -25,6 +26,11 @@ const ButtonLarge = styled(Button)`
     font-size: 36px;
     font-weight: 700;
     margin-right: 40px;
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
 
     @media only screen and (max-width: 1060px){
         margin-bottom: 10px;
@@ -77,7 +83,8 @@ const Column = styled.div`
 
 export function ButtonHomePage(props){
     return(
-        <ButtonLarge onClick={()=>window.location=props.location}>
+        <ButtonLarge>
+            <Link to={props.location}>
             <Row>
                 <Column left>
                     <FontAwesomeIcon icon = {props.icon} color="white" size="2x"/>
@@ -86,6 +93,7 @@ export function ButtonHomePage(props){
                     <span>{props.text}</span>
                 </Column>
             </Row>
+            </Link>
         </ButtonLarge>
     )
 }
