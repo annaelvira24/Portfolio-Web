@@ -14,23 +14,13 @@ import Social from './pages/Social';
 function App() {
   return (
     <div className="App">
-      <Router>
-        <div>
+      <Router basename={process.env.PUBLIC_URL}>
           <Switch>
-              <Route exact path="/Portfolio-Web">
-                <HomePage/>
-              </Route>
-              <Route exact path="/Portfolio-Web/about">
-                <About/>
-              </Route>
-              <Route exact path="/Portfolio-Web/portfolio">
-                <Portfolio/>
-              </Route>
-              <Route exact path="/Portfolio-Web/social">
-                <Social/>
-              </Route>
+              <Route exact path="/" component={HomePage}/>
+              <Route exact path="/about" component={About}/>
+              <Route exact path="/portfolio" component={Portfolio}/>
+              <Route path="/social" component={Social}/>
             </Switch>
-          </div>
       </Router>
     </div>
   );

@@ -176,9 +176,9 @@ class HomePage extends React.Component{
                         </div>
                     </Hero>
                     <ButtonsContainer>
-                        <ButtonHomePage location={"/Portfolio-Web/about"} icon={faUserCircle} text={"ABOUT ME"}/>
-                        <ButtonHomePage location={"/Portfolio-Web/portfolio"} icon={faCopy} text={"PORT FOLIO"}/>
-                        <ButtonHomePage location={"/Portfolio-Web/social"} icon={faGlobe} text={"SOCIAL MEDIA"}/>
+                        <ButtonHomePage location={"/about"} icon={faUserCircle} text={"ABOUT ME"}/>
+                        <ButtonHomePage location={"/portfolio"} icon={faCopy} text={"PORT FOLIO"}/>
+                        <ButtonHomePage location={"/social"} icon={faGlobe} text={"SOCIAL MEDIA"}/>
                     </ButtonsContainer>
                 </Container>
                             
