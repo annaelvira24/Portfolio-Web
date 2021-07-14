@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Burger from './Burger';
 import logo from './../assets/img/logo-small.svg';
+import { Link } from "react-router-dom";
 
 const Nav = styled.nav`
   position: fixed;
@@ -15,11 +16,11 @@ const Nav = styled.nav`
   justify-content: space-between;
 
   z-index: 100;
-  
+
   .logo {
     cursor: pointer;
     padding-left: 110px;
-    margin-top: -10px;
+    margin-top: 10px;
     width: 40px;
   }
 
@@ -34,7 +35,9 @@ const Nav = styled.nav`
 const Navbar = () => {
   return (
     <Nav>
-      <img className="logo" onClick={()=>window.location.href="/"} src={logo}/>
+      <Link to="/">
+        <img className="logo" src={logo}/>
+      </Link>
       <Burger />
     </Nav>
   )
