@@ -17,16 +17,16 @@ function App() {
       <Router>
         <div>
           <Switch>
-              <Route exact path="/">
+              <Route exact path="/Portfolio-Web">
                 <HomePage/>
               </Route>
-              <Route path="/about">
+              <Route exact path="/Portfolio-Web/about">
                 <About/>
               </Route>
-              <Route path="/portfolio">
+              <Route exact path="/Portfolio-Web/portfolio">
                 <Portfolio/>
               </Route>
-              <Route path="/social">
+              <Route exact path="/Portfolio-Web/social">
                 <Social/>
               </Route>
             </Switch>

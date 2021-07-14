@@ -72,10 +72,10 @@ const RightNav = ({ open }) => {
   return (
     <div>
         <Ul open={open}>
-            <li onClick={() => window.location.href='/'}>Home</li>
-            <li onClick={() => window.location.href='/about'}>About Me</li>
-            <li onClick={() => window.location.href='/portfolio'}>Portfolio</li>
-            <li onClick={() => window.location.href='/social'}>Social Media</li>
+            <li onClick={() => window.location.href='/Portfolio-Web'}>Home</li>
+            <li onClick={() => window.location.href='about'}>About Me</li>
+            <li onClick={() => window.location.href='portfolio'}>Portfolio</li>
+            <li onClick={() => window.location.href='social'}>Social Media</li>
         </Ul>
         <Overlay open={open}/>
     </div>
