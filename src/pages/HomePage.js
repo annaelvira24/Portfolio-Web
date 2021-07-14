@@ -1,6 +1,8 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 import styled from 'styled-components';
+import ScrollAnimation from 'react-animate-on-scroll';
+import "animate.css/animate.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelopeSquare, faUserCircle, faGlobe, faCopy} from '@fortawesome/free-solid-svg-icons';
@@ -143,42 +145,43 @@ class HomePage extends React.Component{
     
     render(){
         return(
-            <Container>
-                <Hero>
-                    <div className="title">
-                        <h1 style = {{marginTop: "70px"}}>Hello. I'm Anna.</h1>
-                        <div style = {{marginTop: "-50px"}}>
-                        <Typewriter className="type"
-                            style = {{color: "red"}}
-                            options={{
-                                strings: ['Frontend Engineer', 'Graphic Designer', 'UI/UX Enthusiast'],
-                                autoStart: true,
-                                loop: true,
-                            }}
-                        />
+                <Container className="animate__animated animate__fadeIn">
+                    <Hero>
+                        <div className="title">
+                            <h1 style = {{marginTop: "70px"}}>Hello. I'm Anna.</h1>
+                            <div style = {{marginTop: "-50px"}}>
+                            <Typewriter className="type"
+                                style = {{color: "red"}}
+                                options={{
+                                    strings: ['Frontend Engineer', 'Graphic Designer', 'UI/UX Enthusiast'],
+                                    autoStart: true,
+                                    loop: true,
+                                }}
+                            />
+                            </div>
+                            <ContactsContainer>
+                                <a href="mailto:naelvirahart@gmail.com" target="blank">
+                                    <FontAwesomeIcon icon={faEnvelopeSquare} className="fa-icon" onClick={"www.google.com"}/>
+                                </a>
+                                <a href="https://github.com/annaelvira24" target="blank">
+                                    <FontAwesomeIcon icon={faGithubSquare} className="fa-icon"/>
+                                </a>
+                                <a href="https://id.linkedin.com/in/annaelvira24" target="blank">
+                                    <FontAwesomeIcon icon={faLinkedin} className="fa-icon"/>
+                                </a>
+                            </ContactsContainer>
                         </div>
-                        <ContactsContainer>
-                            <a href="mailto:naelvirahart@gmail.com" target="blank">
-                                <FontAwesomeIcon icon={faEnvelopeSquare} className="fa-icon" onClick={"www.google.com"}/>
-                            </a>
-                            <a href="https://github.com/annaelvira24" target="blank">
-                                <FontAwesomeIcon icon={faGithubSquare} className="fa-icon"/>
-                            </a>
-                            <a href="https://id.linkedin.com/in/annaelvira24" target="blank">
-                                <FontAwesomeIcon icon={faLinkedin} className="fa-icon"/>
-                            </a>
-                        </ContactsContainer>
-                    </div>
-                    <div className="image">
-                        <img src={avatar}/>
-                    </div>
-                </Hero>
-                <ButtonsContainer>
-                    <ButtonHomePage location={"/about"} icon={faUserCircle} text={"ABOUT ME"}/>
-                    <ButtonHomePage location={"/portfolio"} icon={faCopy} text={"PORT FOLIO"}/>
-                    <ButtonHomePage location={"/social"} icon={faGlobe} text={"SOCIAL MEDIA"}/>
-                </ButtonsContainer>
-            </Container>
+                        <div className="image">
+                            <img src={avatar}/>
+                        </div>
+                    </Hero>
+                    <ButtonsContainer>
+                        <ButtonHomePage location={"/about"} icon={faUserCircle} text={"ABOUT ME"}/>
+                        <ButtonHomePage location={"/portfolio"} icon={faCopy} text={"PORT FOLIO"}/>
+                        <ButtonHomePage location={"/social"} icon={faGlobe} text={"SOCIAL MEDIA"}/>
+                    </ButtonsContainer>
+                </Container>
+                            
         )
     }
 }

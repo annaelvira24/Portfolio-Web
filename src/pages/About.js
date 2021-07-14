@@ -5,12 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faCogs, faPalette } from '@fortawesome/free-solid-svg-icons';
 import { Title, SubTitle } from '../components/Text';
 import { Footer } from '../components/Footer';
+import NavBar from '../components/NavBar';
 
 const Container = styled.div`
-    margin: 80px 100px 60px 100px;
+    margin: 120px 100px 60px 100px;
 
     @media only screen and (max-width: 1060px){
-        margin: 80px 50px 10px 50px;
+        margin: 120px 50px 10px 50px;
     }
 `;
 
@@ -218,6 +219,7 @@ class About extends React.Component{
     render(){
         return(
             <div>
+            <NavBar/>
             <Container>
                 <Title>
                     About Me
