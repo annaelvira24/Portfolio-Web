@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Burger from './Burger';
+import { Burger } from './Burger';
 import logo from './../assets/img/logo-small.svg';
 import { Link } from "react-router-dom";
 
@@ -14,31 +14,42 @@ const Nav = styled.nav`
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
+  transition: 0.3s;
 
+  background: ${({ scrolled }) => scrolled ? '#0085AF' : 'white'};
   z-index: 100;
 
-  .logo {
+  img {
     cursor: pointer;
     padding-left: 110px;
-    margin-top: 10px;
+    margin-top: 4px;
     width: 40px;
+    transition: 0.3s;
+
+    filter: ${({ scrolled }) => scrolled ? 'invert(100%) brightness(100%) contrast(200%) opacity(1)' : 'none'};
   }
 
+
   @media (max-width: 1060px) {
-    .logo {
+    img {
       padding-left: 50px;
     }
+  }
 
+  @media (max-width: 768px) {
+    img {
+      padding-left: 25px;
+    }
   }
 `
 
-const Navbar = () => {
+export function Navbar(props){
   return (
-    <Nav>
+    <Nav scrolled={props.scrolled}>
       <Link to="/">
-        <img className="logo" src={logo}/>
+        <img className={props.scrolled ? "filter" : ""} src={logo}/>
       </Link>
-      <Burger />
+      <Burger scrolled={props.scrolled}/>
     </Nav>
   )
 }

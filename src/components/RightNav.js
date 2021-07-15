@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 const Overlay = styled.div`
     background: black;
     opacity: 0.5;
-    width: 100%;
     height: 100%;
     position: fixed;
-    left: 0;
+    right: 0;
     top:0;
-    z-index: -10;
     transition: 0.4s;
 
     opacity: ${({ open }) => open ? '0.5' : '0'};
-    visibility: ${({ open }) => open ? 'visible' : 'none'};
+    width: ${({ open }) => open ? '100%' : '0'};
 
-
+    @media (min-width:768px){
+      display: none;
+    }
 `;
 
 const Ul = styled.ul`   
@@ -29,11 +29,12 @@ const Ul = styled.ul`
     
   a{
     text-decoration: none;
-    color: #3F4648;
+    color: ${({ scrolled }) => scrolled ? 'white' : '#3F4648'};
       
     &:hover{
       transition: 0.3s;
-      color: #0085AF;
+      color: ${({ scrolled }) => scrolled ? 'white' : '#0085AF'};
+      opacity: ${({ scrolled }) => scrolled ? '0.8' : '1'};
     }
   }
 
@@ -45,6 +46,8 @@ const Ul = styled.ul`
   @media (max-width: 1060px) {
     padding-right: 50px;
   }
+
+
   
 
   @media (max-width: 768px) {
@@ -81,10 +84,10 @@ const Ul = styled.ul`
   }
 `;
 
-const RightNav = ({ open }) => {
+const RightNav = ({ open, scrolled }) => {
   return (
     <div>
-        <Ul open={open}>
+        <Ul open={open} scrolled={scrolled}>
             <li> <Link to ='/'>Home</Link></li>
             <li> <Link to ='/about'>About Me</Link></li>
             <li> <Link to ='/portfolio'>Portfolio</Link></li>

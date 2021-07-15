@@ -21,6 +21,7 @@ const StyledBurger = styled.div`
     width: 2rem;
     height: 0.25rem;
     background-color: ${({ open }) => open ? 'white' : '#3F4648'};
+    background-color: ${({ scrolled }) => scrolled ? 'white' : '#3F4648'};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
@@ -37,19 +38,17 @@ const StyledBurger = styled.div`
   }
 `;
 
-const Burger = () => {
+export function Burger(props){
   const [open, setOpen] = useState(false)
   
   return (
     <>
-      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <StyledBurger scrolled={props.scrolled} open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open}/>
+      <RightNav scrolled={props.scrolled} open={open}/>
     </>
   )
 }
-
-export default Burger

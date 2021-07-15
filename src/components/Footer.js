@@ -45,7 +45,7 @@ export function Footer(){
         <FooterContainer>
             <ContactsContainer>
                 <a href="mailto:naelvirahart@gmail.com" target="blank">
-                    <FontAwesomeIcon icon={faEnvelopeSquare} className="fa-icon" onClick={"www.google.com"}/>
+                    <FontAwesomeIcon icon={faEnvelopeSquare} className="fa-icon" onClick={()=>window.open("mailto:naelvirahart@gmail.com")}/>
                 </a>
                 <a href="https://github.com/annaelvira24" target="blank">
                     <FontAwesomeIcon icon={faGithubSquare} className="fa-icon"/>

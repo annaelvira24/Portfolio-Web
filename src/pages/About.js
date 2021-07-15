@@ -216,10 +216,25 @@ const Divider = styled.div`
 `;
 
 class About extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            scrolled: false
+        }
+    }
+    componentDidMount() {
+        document.addEventListener("scroll", () => {
+          const isScroll = window.scrollY < 100 ? false : true;
+    
+          this.setState({ scrolled: isScroll });
+        });
+      }
+
     render(){
         return(
             <div>
-            <NavBar/>
+            <NavBar scrolled = {this.state.scrolled}/>
             <Container>
                 <Title>
                     About Me
