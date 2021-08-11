@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Contents } from './PortfolioContent';
-import { ComingSoon } from './ComingSoon';
 
 const Tab = styled.button`
   font-size: 20px;

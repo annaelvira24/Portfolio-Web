@@ -127,36 +127,21 @@ export class ModalPopUp extends React.Component{
                     transition: '0.3s ease-in'
                 }
                 }}>
-                <div className="container">
-                    <Row>
-                        <ImageContainer>
-                            <img src={this.props.image}/>
-                            <ButtonContainer>
-                                <Button 
-                                    style = {{display: this.props.button ? "block" : "none"}}
-                                    onClick = { () => (window.location.href = this.props.link)}>
-                                        {this.props.buttonText}
-                                </Button>
-                                <Button secondary onClick = {this.props.toggleModal}>Close</Button>
-                            </ButtonContainer>
-                        </ImageContainer>
-                    </Row>
-
-
-                    {/* <ButtonContainer>
-                        <Button secondary onClick = {this.props.toggleModal}>Cancel</Button>
-                        <Button 
-                            style = {{display: this.props.buttonLink ? "none" : "block"}}
-                            onClick = {this.props.toggleModal}>
-                                {this.props.buttonText}
-                        </Button>
-                        <Button 
-                            style = {{display: this.props.buttonLink ? "block" : "none"}}
-                            onClick= {()=>{window.open(this.props.buttonLink)}}>
-                                {this.props.buttonText}
-                        </Button>
-                    </ButtonContainer> */}
-                </div>
+                    <div className="container">
+                        <Row>
+                            <ImageContainer>
+                                <img src={this.props.image}/>
+                                <ButtonContainer>
+                                    <Button 
+                                        style = {{display: this.props.button ? "block" : "none"}}
+                                        onClick = { () => (window.location.href = this.props.link)}>
+                                            {this.props.buttonText}
+                                    </Button>
+                                    <Button secondary onClick = {this.props.toggleModal}>Close</Button>
+                                </ButtonContainer>
+                            </ImageContainer>
+                        </Row>
+                    </div>
                 </ModalLayout>
             )
         }

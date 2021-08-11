@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagramSquare, faBehanceSquare, faBlogger, faLine } from '@fortawesome/free-brands-svg-icons';
+import { faInstagramSquare, faBehanceSquare, faLine } from '@fortawesome/free-brands-svg-icons';
 import { Title, SubTitle } from '../components/Text';
 import { Footer } from '../components/Footer';
 import NavBar from '../components/NavBar';
 import Slide from 'react-reveal/Slide';
 
 import Behance from '../assets/img/OtherLinks/behance.PNG';
-import Behance2 from '../assets/img/OtherLinks/behance2.PNG';
-import Blog from '../assets/img/OtherLinks/blog.PNG';
 import Ig from '../assets/img/OtherLinks/ig.png';
 import Sticker from '../assets/img/OtherLinks/sticker.jpg';
 
@@ -215,61 +213,6 @@ class Other extends React.Component{
                         </Column>
                     </Row>
                     </Slide>
-
-                    {/* <Slide bottom>
-                    <Row main={true} style={{marginTop: "40px"}}>
-                        <Column main = {true} style = {{flexBasis: "50%"}}>
-                            <Row>
-                                <Column style = {{flexBasis: "10%"}}>
-                                    <SocialIcon>
-                                        <a href="https://storytellingforsleep.blogspot.com/" target="blank">
-                                            <FontAwesomeIcon icon={faBlogger} className="fa-icon"/>
-                                        </a>
-                                    </SocialIcon>
-                                </Column>
-
-                                <Column style = {{flexBasis: "90%"}}>
-                                    <SocialTitle>
-                                        Read my random stories
-                                    </SocialTitle>
-                                    <SocialLink>
-                                        <a href="https://storytellingforsleep.blogspot.com/" target="blank">
-                                            storytellingforsleep.blogspot.com
-                                        </a>
-                                    </SocialLink>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Image src={Blog}/>
-                            </Row>
-                        </Column>
-                        <Column>
-                            <Row>
-                                <Column style = {{flexBasis: "10%"}}>
-                                    <SocialIcon>
-                                        <a href="https://www.behance.net/annahartoyo" target="blank">
-                                            <FontAwesomeIcon icon={faBehanceSquare} className="fa-icon"/>
-                                        </a>
-                                    </SocialIcon>
-                                </Column>
-
-                                <Column style = {{flexBasis: "90%"}}>
-                                    <SocialTitle>
-                                        Find my design stuffs
-                                    </SocialTitle>
-                                    <SocialLink>
-                                        <a href="https://www.behance.net/annahartoyo" target="blank">
-                                            behance.net/annahartoyo
-                                        </a>
-                                    </SocialLink>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Image src={Behance}/>
-                            </Row>
-                        </Column>
-                    </Row>
-                    </Slide> */}
                 </Container>
                 <Footer/>
             </div>

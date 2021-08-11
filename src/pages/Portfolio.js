@@ -1,5 +1,4 @@
 import React from 'react';
-import { ComingSoon } from './../components/ComingSoon';
 import styled from 'styled-components';
 import { TabGroup } from "./../components/Tabs"; 
 import { Title, SubTitle } from '../components/Text';

@@ -8,7 +8,6 @@ import { faCode, faCogs, faPalette } from '@fortawesome/free-solid-svg-icons';
 import { Title, SubTitle } from '../components/Text';
 import { Footer } from '../components/Footer';
 import NavBar from '../components/NavBar';
-import ScrollAnimation from 'react-animate-on-scroll';
 import Slide from 'react-reveal/Slide';
 
 const Animation = keyframes`${fadeInUp}`;
@@ -23,10 +22,6 @@ const Container = styled.div`
     @media only screen and (max-width: 768px){
         margin: 120px 25px 10px 25px;
     }
-`;
-
-const AnimatedDiv = styled.div`
-    animation: 1s ${Animation};
 `;
 
 const Profile = styled.div`
@@ -360,65 +355,62 @@ class About extends React.Component{
                     </Slide>
                 </Skills>    
                 
-                
-                {/* <div className="animate__animated animate__fadeIn"> */}
                 <Slide bottom>
-                <Experiences>
-                    <SubTitle>Experiences</SubTitle>
-                    <Row>
-                        <Column left>
-                            <Bullet/>
-                            <Divider/>
-                        </Column>
-                        <Column right>
-                            <h3>Frontend Developer Intern</h3>
-                            <p>Transfree • Jun 2021 - Present</p>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column left>
-                            <Bullet/>
-                            <Divider long/>
-                        </Column>
-                        <Column right>
-                            <h3>Computational Science and Engineering Laboratory Assistant</h3>
-                            <p>Institut Teknologi Bandung   •   Agu 2020 - Present</p>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column left>
-                            <Bullet/>
-                            <Divider/>
-                        </Column>
-                        <Column right>
-                            <h3>Head of Design</h3>
-                            <p>Arkavidia 7.0 •   Jul 2020 - Apr 2021</p>
-                        </Column>
-                    </Row>
+                    <Experiences>
+                        <SubTitle>Experiences</SubTitle>
+                        <Row>
+                            <Column left>
+                                <Bullet/>
+                                <Divider/>
+                            </Column>
+                            <Column right>
+                                <h3>Frontend Developer Intern</h3>
+                                <p>Transfree • Jun 2021 - Present</p>
+                            </Column>
+                        </Row>
+                        <Row>
+                            <Column left>
+                                <Bullet/>
+                                <Divider long/>
+                            </Column>
+                            <Column right>
+                                <h3>Computational Science and Engineering Laboratory Assistant</h3>
+                                <p>Institut Teknologi Bandung   •   Agu 2020 - Present</p>
+                            </Column>
+                        </Row>
+                        <Row>
+                            <Column left>
+                                <Bullet/>
+                                <Divider/>
+                            </Column>
+                            <Column right>
+                                <h3>Head of Design</h3>
+                                <p>Arkavidia 7.0 •   Jul 2020 - Apr 2021</p>
+                            </Column>
+                        </Row>
 
-                    <Row>
-                        <Column left>
-                            <Bullet/>
-                            <Divider/>
-                        </Column>
-                        <Column right>
-                            <h3>Design Team Leader</h3>
-                            <p>Codemy HMIF ITB   •   Apr 2020 - Des 2020</p>
-                        </Column>
-                    </Row>
+                        <Row>
+                            <Column left>
+                                <Bullet/>
+                                <Divider/>
+                            </Column>
+                            <Column right>
+                                <h3>Design Team Leader</h3>
+                                <p>Codemy HMIF ITB   •   Apr 2020 - Des 2020</p>
+                            </Column>
+                        </Row>
 
-                    <Row>
-                        <Column left>
-                            <Bullet/>
-                        </Column>
-                        <Column right>
-                            <h3>Head of Creative Media</h3>
-                            <p>ITBMUN 2020 • May 2019 - Feb 2020</p>
-                        </Column>
-                    </Row>
-                </Experiences>
+                        <Row>
+                            <Column left>
+                                <Bullet/>
+                            </Column>
+                            <Column right>
+                                <h3>Head of Creative Media</h3>
+                                <p>ITBMUN 2020 • May 2019 - Feb 2020</p>
+                            </Column>
+                        </Row>
+                    </Experiences>
                 </Slide>
-                {/* </div> */}
             </Container>
             <Footer/>
             </div>
