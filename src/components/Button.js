@@ -21,7 +21,8 @@ export const Button = styled.button`
 `;
 
 const ButtonLarge = styled(Button)`
-    width: 352px;
+    width: 29%;
+    max-width: 360px;
     min-height: 136px;
     font-size: 36px;
     font-weight: 700;

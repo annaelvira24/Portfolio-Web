@@ -27,16 +27,16 @@ const Ul = styled.ul`
     flex-flow: row nowrap;
     padding-right: 120px;
     
-  a{
-    text-decoration: none;
-    color: ${({ scrolled }) => scrolled ? 'white' : '#3F4648'};
+  // a{
+  //   text-decoration: none;
+  //   color: ${({ scrolled, active }) => scrolled ? 'white' : active ? '#0085AF' : '#3F4648'};
       
-    &:hover{
-      transition: 0.3s;
-      color: ${({ scrolled }) => scrolled ? 'white' : '#0085AF'};
-      opacity: ${({ scrolled }) => scrolled ? '0.8' : '1'};
-    }
-  }
+  //   &:hover{
+  //     transition: 0.3s;
+  //     color: ${({ scrolled }) => scrolled ? 'white' : '#0085AF'};
+  //     opacity: ${({ scrolled }) => scrolled ? '0.8' : '1'};
+  //   }
+  // }
 
   li {
     padding-left: 30px;
@@ -46,9 +46,6 @@ const Ul = styled.ul`
   @media (max-width: 1060px) {
     padding-right: 50px;
   }
-
-
-  
 
   @media (max-width: 768px) {
     flex-flow: column nowrap;
@@ -73,25 +70,45 @@ const Ul = styled.ul`
         }
     }
 
-    a{
-      color: #fff;
+    // a{
+    //   color: #fff;
         
-      &:hover{
-        color: white;
-        opacity: 0.8;
-      }
-    }
+    //   &:hover{
+    //     color: white;
+    //     opacity: 0.8;
+    //   }
+    // }
   }
 `;
 
-const RightNav = ({ open, scrolled }) => {
+const NavBarChild = styled(Link)`
+  text-decoration: none;
+  color: ${({ scrolled, active }) => scrolled ? 'white' : active ? '#0085AF' : '#3F4648'};
+    
+  &:hover{
+    transition: 0.3s;
+    color: ${({ scrolled }) => scrolled ? 'white' : '#0085AF'};
+    opacity: ${({ scrolled }) => scrolled ? '0.8' : '1'};
+  }
+
+  @media (max-width: 768px) {
+    color: #fff;
+        
+    &:hover{
+      color: white;
+      opacity: 0.8;
+    }
+  }
+`
+
+const RightNav = ({ open, scrolled, active }) => {
   return (
     <div>
         <Ul open={open} scrolled={scrolled}>
-            <li> <Link to ='/'>Home</Link></li>
-            <li> <Link to ='/about'>About Me</Link></li>
-            <li> <Link to ='/portfolio'>Portfolio</Link></li>
-            <li> <Link to ='/social'>Social Media</Link></li>
+            <li> <NavBarChild to ='/' scrolled={scrolled}>Home</NavBarChild></li>
+            <li> <NavBarChild to ='/about' scrolled={scrolled} active = {active == "about"}>About Me</NavBarChild></li>
+            <li> <NavBarChild to ='/portfolio' scrolled={scrolled} active = {active == "portfolio"}>Portfolio</NavBarChild></li>
+            <li> <NavBarChild to ='/other' scrolled={scrolled} active = {active == "other"}>Other Links</NavBarChild></li>
         </Ul>
         <Overlay open={open}/>
     </div>

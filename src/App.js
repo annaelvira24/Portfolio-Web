@@ -9,7 +9,7 @@ import {
 import HomePage from './pages/HomePage';
 import About from './pages/About';
 import Portfolio from './pages/Portfolio';
-import Social from './pages/Social';
+import Other from './pages/OtherLinks';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
               <Route exact path="/" component={HomePage}/>
               <Route exact path="/about" component={About}/>
               <Route exact path="/portfolio" component={Portfolio}/>
-              <Route path="/social" component={Social}/>
+              <Route path="/other" component={Other}/>
             </Switch>
       </Router>
     </div>

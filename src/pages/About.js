@@ -1,11 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeInUp } from 'react-animations';
+import "animate.css/animate.min.css";
 import photo from '../assets/img/anna.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faCogs, faPalette } from '@fortawesome/free-solid-svg-icons';
 import { Title, SubTitle } from '../components/Text';
 import { Footer } from '../components/Footer';
 import NavBar from '../components/NavBar';
+import ScrollAnimation from 'react-animate-on-scroll';
+import Slide from 'react-reveal/Slide';
+
+const Animation = keyframes`${fadeInUp}`;
 
 const Container = styled.div`
     margin: 120px 100px 60px 100px;
@@ -13,6 +19,14 @@ const Container = styled.div`
     @media only screen and (max-width: 1060px){
         margin: 120px 50px 10px 50px;
     }
+
+    @media only screen and (max-width: 768px){
+        margin: 120px 25px 10px 25px;
+    }
+`;
+
+const AnimatedDiv = styled.div`
+    animation: 1s ${Animation};
 `;
 
 const Profile = styled.div`
@@ -56,14 +70,17 @@ const Profile = styled.div`
             text-align: center;
             padding-left: 0px;
         }
-
     }
 `;
 
 const Skills = styled.div`
     display: flex;
-    margin-top: 50px;
+    margin-top: 160px;
     flex-direction: column;
+
+    @media only screen and (max-width: 800px){
+        margin-top: 50px;
+    }
 `;
 
 const CardsContainer = styled.div`
@@ -82,11 +99,16 @@ const Card = styled.div`
     height: 235px;
     margin-right: 20px;
     padding: 40px;
+    box-shadow: 0px 8px 4px 3px rgba(0, 0, 0, 0.1);
 
     text-align: center;
     background: #E3F7FF;
-    box-shadow: 0px 8px 8px 3px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    transition: 0.3s;
+
+    &:hover{
+        box-shadow: 0px 8px 8px 3px rgba(0, 0, 0, 0.25);
+    }
 
     >.icon{
         margin-bottom: 10px;
@@ -154,9 +176,13 @@ const Card = styled.div`
 
 const Experiences = styled.div`
     display: flex;
-    margin-top: 50px;
+    margin-top: 100px;
     flex-direction: column;
     font-family: "Raleway", sans-serif;
+
+    @media only screen and (max-width: 800px){
+        margin-top: 50px;
+    }
 `;
 
 const Row = styled.div`
@@ -225,7 +251,7 @@ class About extends React.Component{
     }
     componentDidMount() {
         document.addEventListener("scroll", () => {
-          const isScroll = window.scrollY < 100 ? false : true;
+          const isScroll = window.scrollY < 80 ? false : true;
     
           this.setState({ scrolled: isScroll });
         });
@@ -234,28 +260,35 @@ class About extends React.Component{
     render(){
         return(
             <div>
-            <NavBar scrolled = {this.state.scrolled}/>
+            <NavBar 
+                scrolled = {this.state.scrolled}
+                active = {"about"}
+            />
             <Container>
-                <Title>
-                    About Me
-                </Title>
-                <Profile>
-                    <div className="photo">
-                        <img src={photo}/>
-                    </div>
-                    <div className="desc">
-                        <h3>Anna Elvira Hartoyo</h3>
-                        <br/>
-                        <span>Bandung, Indonesia</span>
-                        <p>
-                            My name is Anna Elvira Hartoyo, an undergraduate informatics engineering student in Bandung Institute of Technology (2018-2022).
-                            Neither a programmer nor a graphic designer, I'm just an ordinary girl who attracted to visual arts. 
-                            I fell in love with art since I was a kid. But since technology is growing rapidly nowadays, 
-                            I decided to take this major and I'd love to combine art and technology.
-                        </p>
-                    </div>
-                </Profile>
+                <Slide bottom>
+                    <Title>
+                        About Me
+                    </Title>
+                    <Profile>
+                        <div className="photo">
+                            <img src={photo}/>
+                        </div>
+                        <div className="desc">
+                            <h3>Anna Elvira Hartoyo</h3>
+                            <br/>
+                            <span>Bandung, Indonesia</span>
+                            <p>
+                                My name is Anna Elvira Hartoyo, an undergraduate informatics engineering student in Bandung Institute of Technology (2018-2022).
+                                Neither a programmer nor a graphic designer, I'm just an ordinary girl who attracted to visual arts. 
+                                I fell in love with art since I was a kid. But since technology is growing rapidly nowadays, 
+                                I decided to take this major and I'd love to combine art and technology.
+                            </p>
+                        </div>
+                    </Profile>
+                </Slide>
+
                 <Skills>
+                    <Slide bottom>
                     <SubTitle>
                         Technical Skills
                     </SubTitle>
@@ -324,7 +357,12 @@ class About extends React.Component{
                             </div>
                         </Card>
                     </CardsContainer>
-                </Skills>            
+                    </Slide>
+                </Skills>    
+                
+                
+                {/* <div className="animate__animated animate__fadeIn"> */}
+                <Slide bottom>
                 <Experiences>
                     <SubTitle>Experiences</SubTitle>
                     <Row>
@@ -379,6 +417,8 @@ class About extends React.Component{
                         </Column>
                     </Row>
                 </Experiences>
+                </Slide>
+                {/* </div> */}
             </Container>
             <Footer/>
             </div>

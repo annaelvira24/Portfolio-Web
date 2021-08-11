@@ -49,7 +49,7 @@ export function Navbar(props){
       <Link to="/">
         <img className={props.scrolled ? "filter" : ""} src={logo}/>
       </Link>
-      <Burger scrolled={props.scrolled}/>
+      <Burger active = {props.active} scrolled={props.scrolled}/>
     </Nav>
   )
 }

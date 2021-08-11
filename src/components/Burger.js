@@ -48,7 +48,7 @@ export function Burger(props){
         <div />
         <div />
       </StyledBurger>
-      <RightNav scrolled={props.scrolled} open={open}/>
+      <RightNav active={props.active} scrolled={props.scrolled} open={open}/>
     </>
   )
 }

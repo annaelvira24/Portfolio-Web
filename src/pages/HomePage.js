@@ -1,12 +1,14 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn } from 'react-animations';
 import "animate.css/animate.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelopeSquare, faUserCircle, faGlobe, faCopy} from '@fortawesome/free-solid-svg-icons';
 import { ButtonHomePage } from '../components/Button';
 import avatar from '../assets/img/anna-avatar.svg';
+import Fade from 'react-reveal/Fade';
 
 const Container = styled.div`
     margin: 30px 60px 10px 60px;
@@ -144,7 +146,8 @@ class HomePage extends React.Component{
     
     render(){
         return(
-                <Container className="animate__animated animate__fadeIn">
+            <Container>
+                <Fade>
                     <Hero>
                         <div className="title">
                             <h1 style = {{marginTop: "70px"}}>Hello. I'm Anna.</h1>
@@ -175,12 +178,12 @@ class HomePage extends React.Component{
                         </div>
                     </Hero>
                     <ButtonsContainer>
-                        <ButtonHomePage location={"/about"} icon={faUserCircle} text={"ABOUT ME"}/>
+                        <ButtonHomePage location={"/about"} icon={faUserCircle} text={"ABOUT    ME"}/>
                         <ButtonHomePage location={"/portfolio"} icon={faCopy} text={"PORT FOLIO"}/>
-                        <ButtonHomePage location={"/social"} icon={faGlobe} text={"SOCIAL MEDIA"}/>
+                        <ButtonHomePage location={"/other"} icon={faGlobe} text={"OTHER LINKS"}/>
                     </ButtonsContainer>
-                </Container>
-                            
+                </Fade>
+            </Container>    
         )
     }
 }
