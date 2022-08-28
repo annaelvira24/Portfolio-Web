@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModalPopUp } from './PopUp';
 
 import Sorting from '../assets/img/Portfolio/sorting.png';
 import Sunda from '../assets/img/Portfolio/sundatranslator.png';
@@ -21,26 +20,22 @@ import Deer from '../assets/img/Portfolio/deer.png';
 
 const Row = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     @media only screen and (max-width: 1060px){
         flex-direction: column;
     }
 `;
 
-const Column = styled.div`
-    flex-basis: 50%;
-    margin-bottom: 60px;
-    margin-left: 10px;
-
-    margin-right: ${({ left }) => left ? "40px" : "10px"};
-
-    @media only screen and (max-width: 1060px){
-        margin-right: 5px;
-    }
-`;
-
 const Card = styled.div`
     cursor: pointer;
+    width: 47%;
+    margin: 20px 8px;
+
+    @media only screen and (max-width: 1060px){
+        width: 98%;
+    }
 `;
 
 const ImageContainer = styled.div`
@@ -119,11 +114,104 @@ export class Contents extends React.Component{
         super(props);
         this.state = {
             open: false,
-            image: undefined,
-            title: "",
-            desc: "",
-            button: false,
-            link: ""
+            mappingContent: {
+                'code': [
+                            {
+                                image:Sunda,
+                                title:"Sundanese Translator",
+                                desc:"A web-based application to translate Indonesian to Sundanese and vise versa. Use string matching algorithm to match and search keywords.",
+                                tech:["python", "flask", "html", "css"],
+                                link:"https://github.com/annaelvira24/Simple-Sundanese-Translator"
+                            },
+                            {
+                                image:Sorting,
+                                title:"Sorting Tutorial",
+                                desc:"A web-based application to learn about sorting algorithms and how they work.",
+                                tech:["python", "flask", "vuejs"],
+                                link:"https://github.com/annaelvira24/Sorting-Tutorial"
+                            },
+                            {
+                                image:Chocolate,
+                                title:"Chocolate E-Commerce",
+                                desc:"A web-based application that act as an e-commerce which sells chocolates. Users can take a look and buy many kinds of chocolates.",
+                                tech:["html", "css", "javascript", "php"],
+                                link:"https://github.com/annaelvira24/IF3110-willy-wangkys-web"
+                            },
+                            {
+                                image:Factory,
+                                title:"Chocolate Factory",
+                                desc:"A web-based application that serves and monitors supplies for chocolate e-commerce.",
+                                tech:["reactjs", "nodejs", "mysql"],
+                                link:"https://github.com/annaelvira24/IF3110-willy-wangkys-factory"
+                            },
+                            {
+                                image:Jabar,
+                                title:"Jabar Survei",
+                                desc:"Crowdsourcing website that facilitate users to create survey and collect responses.",
+                                tech:["reactjs", "bootstrap", "nodejs", "mysql"],
+                                link:"https://github.com/annaelvira24/jds1-jabarsurvei"
+                            },
+                            {
+                                image:SportApp,
+                                title:"Sport App",
+                                desc:"An android application which provide users with latest sport news and save the users exercises records.",
+                                tech:["android", "kotlin"],
+                                link:"https://github.com/annaelvira24/Workout-SportApp"
+                            }
+                        ],
+                'uiux': [
+                            {
+                                image:Cooking,
+                                title:"Happy Cooking",
+                                desc:"App to search and share thousands of recipes",
+                                tech:["adobe photoshop"]
+                            },
+                            {
+                                image:Nea,
+                                title:"Redesign NEA Singapore Web",
+                                desc:"Redesigned NEA Singapore user interface website.",
+                                tech:["website", "adobe XD"]
+                            },
+                            {
+                                image:InvesWeb,
+                                title:"Redesign Invesproperti Web",
+                                desc:"Redesigned Invesproperti user interface website.",
+                                tech:["website", "figma"]
+                            },
+                            {
+                                image:InvesApp,
+                                title:"Redesign Invesproperti Mobile App",
+                                desc:"Redesigned Invesproperti user interface mobile app.",
+                                tech:["android app", "figma"]
+                            }
+                    ],
+                'design': [
+                            {
+                                image:Deer,
+                                title:"Deer",
+                                desc:"Just a photoshop art for fun",
+                                tech:["adobe photoshop", "random"]
+                            },
+                            {
+                                image:Codemy,
+                                title:"Codemy Book",
+                                desc:"A programming tutorial book produced by Himpunan Mahasiswa Informatika (HMIF) ITB",
+                                tech:["content", "illustration", "book cover"]
+                            },
+                            {
+                                image:ITBMUN,
+                                title:"ITBMUN 2020",
+                                desc:"An international model united nations competition holds by GMUNC ITB",
+                                tech:["poster", "logo", "social media"]
+                            },
+                            {
+                                image:Arkav,
+                                title:"Arkavidia 7.0",
+                                desc:"An annual event holds by Himpunan Mahasiswa Informatika (HMIF) ITB",
+                                tech:["logo", "grand design", "isometric"]
+                            }
+                    ]
+            }
         }
 
         this.toggleModal = this.toggleModal.bind(this);
@@ -135,7 +223,7 @@ export class Contents extends React.Component{
         return(
             <Card onClick = {() => this.openModal(props)}>
                 <ImageContainer>
-                    <img src={props.image}/>
+                    <img src={props.image} alt="portfolio"/>
                     <div className="desc">
                         <h3>{props.title}</h3>
                         <p>{props.desc}</p>
@@ -153,8 +241,7 @@ export class Contents extends React.Component{
     }
 
     openModal(props){
-        this.toggleModal();
-        this.setState({
+        this.props.selectContent({
             image: props.image,
             link: props.link
         })
@@ -162,188 +249,23 @@ export class Contents extends React.Component{
 
     render(){
         var content;
-        if(this.props.now == "code"){
-            content = 
-                <div>
-                    <Row>
-                <Column left>
-                    {this.CardContent({
-                        image:Sunda,
-                        title:"Sundanese Translator",
-                        desc:"A web-based application to translate Indonesian to Sundanese and vise versa. Use string matching algorithm to match and search keywords.",
-                        tech:["python", "flask", "html", "css"],
-                        link:"https://github.com/annaelvira24/Simple-Sundanese-Translator"})
-                    } 
-                </Column>
-                <Column>
-                    {this.CardContent({
-                        image:Sorting,
-                        title:"Sorting Tutorial",
-                        desc:"A web-based application to learn about sorting algorithms and how they work.",
-                        tech:["python", "flask", "vuejs"],
-                        link:"https://github.com/annaelvira24/Sorting-Tutorial"})
-                    }
-                </Column>
-            </Row>
-
-            <Row>
-                <Column left>
-                    {this.CardContent({
-                        image:Chocolate,
-                        title:"Chocolate E-Commerce",
-                        desc:"A web-based application that act as an e-commerce which sells chocolates. Users can take a look and buy many kinds of chocolates.",
-                        tech:["html", "css", "javascript", "php"],
-                        link:"https://github.com/annaelvira24/IF3110-willy-wangkys-web"})
-                    }
-                </Column>
-                <Column>
-                    {this.CardContent({
-                        image:Factory,
-                        title:"Chocolate Factory",
-                        desc:"A web-based application that serves and monitors supplies for chocolate e-commerce.",
-                        tech:["reactjs", "nodejs", "mysql"],
-                        link:"https://github.com/annaelvira24/IF3110-willy-wangkys-factory"})
-                    }
-                </Column>
-            </Row>
-
-            <Row>
-                <Column left>
-                    <Card>
-                        {this.CardContent({ 
-                            image:Jabar,
-                            title:"Jabar Survei",
-                            desc:"Crowdsourcing website that facilitate users to create survey and collect responses.",
-                            tech:["reactjs", "bootstrap", "nodejs", "mysql"],
-                            link:"https://github.com/annaelvira24/jds1-jabarsurvei"})
-                        }
-                    </Card>
-                </Column>
-                <Column>
-                    {this.CardContent({ 
-                        image:SportApp,
-                        title:"Sport App",
-                        desc:"An android application which provide users with latest sport news and save the users exercises records.",
-                        tech:["android", "kotlin"],
-                        link:"https://github.com/annaelvira24/Workout-SportApp"})
-                    }
-                </Column>
-            </Row>
-
-            <ModalPopUp
-                open={this.state.open}
-                toggleModal={this.toggleModal}
-                image={this.state.image}
-                button={true}
-                link={this.state.link}
-                buttonText={"Go to Github"}
-            />
-            </div>
-        }
-
-        else if (this.props.now == "uiux"){
-            content = 
-                <div>
-                    <Row>
-                        <Column left>
-                            {this.CardContent({
-                                image:Cooking,
-                                title:"Happy Cooking",
-                                desc:"App to search and share thousands of recipes",
-                                tech:["adobe photoshop"]})
-                            }
-                    </Column>
-                    <Column>
-                        {this.CardContent ({
-                            image:Nea,
-                            title:"Redesign NEA Singapore Web",
-                            desc:"Redesigned NEA Singapore user interface website.",
-                            tech:["website", "adobe XD"]})
-                        }
-                    </Column>
-                </Row>
-        
+        content = 
+            <div>
                 <Row>
-                    <Column left>
-                        {this.CardContent({ 
-                            image:InvesWeb,
-                            title:"Redesign Invesproperti Web",
-                            desc:"Redesigned Invesproperti user interface website.",
-                            tech:["website", "figma"]})
-                        }
-                    </Column>
-        
-                    <Column>
-                        {this.CardContent({ 
-                            image:InvesApp,
-                            title:"Redesign Invesproperti Mobile App",
-                            desc:"Redesigned Invesproperti user interface mobile app.",
-                            tech:["android app", "figma"]})
-                        }
-                    </Column>
+                    {this.state.mappingContent[this.props.now].map(content => (
+                        this.CardContent({
+                            image: content.image,
+                            title: content.title,
+                            desc: content.desc,
+                            tech: content.tech,
+                            link: content.link
+                        })
+                    ))}
                 </Row>
-
-                <ModalPopUp
-                    open={this.state.open}
-                    toggleModal={this.toggleModal}
-                    image={this.state.image}
-                />
             </div>
-        }
-        else if (this.props.now == "design"){
-            content =
-                <div>
-                <Row>
-                <Column left>
-                    {this.CardContent({ 
-                        image:Deer,
-                        title:"Deer",
-                        desc:"Just a photoshop art for fun",
-                        tech:["adobe photoshop", "random"]})
-                    }
-                </Column>
-                <Column>
-                    {this.CardContent({ 
-                        image:Codemy,
-                        title:"Codemy Book",
-                        desc:"A programming tutorial book produced by Himpunan Mahasiswa Informatika (HMIF) ITB",
-                        tech:["content", "illustration", "book cover"]})
-                    }
-                </Column>
-            </Row>
-
-            <Row>
-                <Column left>
-                    {this.CardContent({ 
-                        image:ITBMUN,
-                        title:"ITBMUN 2020",
-                        desc:"An international model united nations competition holds by GMUNC ITB",
-                        tech:["poster", "logo", "social media"]})
-                    }
-                </Column>
-
-                <Column>
-                    {this.CardContent({ 
-                        image:Arkav,
-                        title:"Arkavidia 7.0",
-                        desc:"An annual event holds by Himpunan Mahasiswa Informatika (HMIF) ITB",
-                        tech:["logo", "grand design", "isometric"]})
-                    }
-                </Column>
-            </Row>
-
-            <ModalPopUp
-                open={this.state.open}
-                toggleModal={this.toggleModal}
-                image={this.state.image}
-            />
-            </div>
-        }
-
         return(
             <div>
                 {content}
-                
             </div>
         )
     }

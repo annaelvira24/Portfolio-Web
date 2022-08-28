@@ -1,6 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { fadeInUp } from 'react-animations';
+import styled from 'styled-components';
 import "animate.css/animate.min.css";
 import photo from '../assets/img/anna.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,8 +8,6 @@ import { Title, SubTitle } from '../components/Text';
 import { Footer } from '../components/Footer';
 import NavBar from '../components/NavBar';
 import Slide from 'react-reveal/Slide';
-
-const Animation = keyframes`${fadeInUp}`;
 
 const Container = styled.div`
     margin: 120px 100px 60px 100px;
@@ -28,7 +25,7 @@ const Profile = styled.div`
     display: flex;
     margin-top: 30px;
 
-    >.photo{
+    >.profile-pic{
         flex-basis: 20%;
     }
 
@@ -55,6 +52,10 @@ const Profile = styled.div`
             color: #0085AF;
             font-size: 18px;
         }
+    }
+
+    p {
+        line-height: 28px;
     }
 
     @media only screen and (max-width: 1060px){
@@ -90,8 +91,8 @@ const CardsContainer = styled.div`
 `;
 
 const Card = styled.div`
-    width: 247px;
-    height: 235px;
+    width: 30%;
+    max-height: 235px;
     margin-right: 20px;
     padding: 40px;
     box-shadow: 0px 8px 4px 3px rgba(0, 0, 0, 0.1);
@@ -118,8 +119,11 @@ const Card = styled.div`
     >.row{
         padding: 20px 8px 10px 8px;
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         text-align: left;
+        max-height: 120px;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 
     >.column{
@@ -152,7 +156,7 @@ const Card = styled.div`
         padding: 40px 20px 20px 20px;
 
         >.row{
-            flex-direction: column;
+            justify-content: space-evenly;
         }
     }
 
@@ -241,7 +245,51 @@ class About extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            scrolled: false
+            scrolled: false,
+            skills: [
+                {
+                    title: 'Programming Language',
+                    icon: faCode,
+                    items: ['Python', 'C', 'C++', 'C#', 'Java', 'HTML', 'CSS', 'Javascript', 'PHP']
+                },
+                {
+                    title: 'Frameworks & Technologies',
+                    icon: faCogs,
+                    items: ['ReactJS', 'VueJS', 'NodeJS', 'Bootstrap', 'SQL', 'Flask', 'Linux', 'Git']
+                },
+                {
+                    title: 'Design Tools',
+                    icon: faPalette,
+                    items: ['Adobe Photoshop', 'Adobe Illustrator', 'Adobe Premiere Pro', 'Adobe XD', 'Figma']
+                }
+            ],
+            experiences: [
+                {
+                    title: 'Frontend Engineer',
+                    desc: 'Shopee Indonesia • Aug 2022 - Present'
+                },
+                {
+                    title: 'Software Engineer Intern',
+                    desc: 'Prosa.ai • Aug 2021 - Jun 2022'
+                },
+                {
+                    title: 'Frontend Developer Intern',
+                    desc: 'Transfree • Jun - Aug 2021'
+                },
+                {
+                    title: 'Computational Science and Engineering Laboratory Assistant',
+                    desc: 'Institut Teknologi Bandung • Agu 2020 - Jun 2022'
+                },
+                {
+                    title: 'Design Team Leader',
+                    desc: 'Codemy HMIF ITB   •   Apr 2020 - Des 2020'
+                },
+                {
+                    title: 'Head of Creative Media',
+                    desc: 'ITBMUN 2020 • May 2019 - Feb 2020',
+                    last: true
+                },
+            ]
         }
     }
     componentDidMount() {
@@ -265,18 +313,19 @@ class About extends React.Component{
                         About Me
                     </Title>
                     <Profile>
-                        <div className="photo">
-                            <img src={photo}/>
+                        <div className="profile-pic">
+                            <img src={photo} alt="profile-pic" />
                         </div>
                         <div className="desc">
                             <h3>Anna Elvira Hartoyo</h3>
                             <br/>
                             <span>Bandung, Indonesia</span>
                             <p>
-                                My name is Anna Elvira Hartoyo, an undergraduate informatics engineering student in Bandung Institute of Technology (2018-2022).
-                                Neither a programmer nor a graphic designer, I'm just an ordinary girl who attracted to visual arts. 
-                                I fell in love with art since I was a kid. But since technology is growing rapidly nowadays, 
-                                I decided to take this major and I'd love to combine art and technology.
+                                My name is Anna Elvira Hartoyo, an Informatics Engineering graduate from Bandung Institute of Technology (2018-2022).
+                                Currently I am working as a software engineer, specifically for the frontend development at the leading e-commerce 
+                                platform in Southeast Asia and Taiwan, Shopee. I have been in frontend development field since 2021 when I got 
+                                my first internship. For me this job is align with my degree and art passion.
+                                Besides that, I also love cooking and designing. 
                             </p>
                         </div>
                     </Profile>
@@ -284,131 +333,46 @@ class About extends React.Component{
 
                 <Skills>
                     <Slide bottom>
-                    <SubTitle>
-                        Technical Skills
-                    </SubTitle>
-                    <CardsContainer>
-                        <Card>
-                            <div className="icon">
-                                <FontAwesomeIcon icon={faCode} size={"3x"}/>
-                            </div>
-                            <span className="title">Programming Language</span>
-                            <div className="row">
-                                <div className="column">
-                                    <ul>
-                                        <li>Python</li>
-                                        <li>C</li>
-                                        <li>C++</li>
-                                        <li>C#</li>
-                                        <li>Java</li>
-                                    </ul>
-                                </div>
-                                <div className="column">
-                                    <ul>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>PHP</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </Card>
-                        <Card>
-                            <div className="icon">
-                                <FontAwesomeIcon icon={faCogs} size={"3x"}/>
-                            </div>
-                            <span className="title">Frameworks & Technologies</span>
-                            <div className="row">
-                                <div className="column">
-                                    <ul>
-                                        <li>React JS</li>
-                                        <li>Node JS</li>
-                                        <li>Bootstrap</li>
-                                        <li>SQL</li>
-                                    </ul>
-                                </div>
-                                <div className="column">
-                                    <ul>
-                                        <li>Flask</li>
-                                        <li>Linux</li>
-                                        <li>Git</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </Card>
-                        <Card>
-                            <div className="icon">
-                                <FontAwesomeIcon icon={faPalette} size={"3x"}/>
-                            </div>
-                            <span className="title">Design Tools</span>
-                            <div className="row center">
-                                <ul>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Adobe Illustrator</li>
-                                    <li>Adobe Premiere Pro</li>
-                                    <li>Adobe XD</li>
-                                    <li>Figma</li>
-                                </ul>
-                            </div>
-                        </Card>
-                    </CardsContainer>
+                        <SubTitle>
+                            Technical Skills
+                        </SubTitle>
+                        <CardsContainer>
+                            {this.state.skills.map(function (skill, i) {
+                                return (
+                                    <Card key={'skill-' + i}>
+                                        <div className="icon">
+                                            <FontAwesomeIcon icon={skill.icon} size={"3x"}/>
+                                        </div>
+                                        <span className="title">{skill.title}</span>
+                                        <div className="row">
+                                            {skill.items.map((item) => {
+                                                return <li>{item}</li>
+                                            })}
+                                        </div>
+                                    </Card>
+                                )
+                            })}
+                        </CardsContainer>
                     </Slide>
                 </Skills>    
                 
                 <Slide bottom>
                     <Experiences>
                         <SubTitle>Experiences</SubTitle>
-                        <Row>
-                            <Column left>
-                                <Bullet/>
-                                <Divider/>
-                            </Column>
-                            <Column right>
-                                <h3>Frontend Developer Intern</h3>
-                                <p>Transfree • Jun 2021 - Present</p>
-                            </Column>
-                        </Row>
-                        <Row>
-                            <Column left>
-                                <Bullet/>
-                                <Divider long/>
-                            </Column>
-                            <Column right>
-                                <h3>Computational Science and Engineering Laboratory Assistant</h3>
-                                <p>Institut Teknologi Bandung   •   Agu 2020 - Present</p>
-                            </Column>
-                        </Row>
-                        <Row>
-                            <Column left>
-                                <Bullet/>
-                                <Divider/>
-                            </Column>
-                            <Column right>
-                                <h3>Head of Design</h3>
-                                <p>Arkavidia 7.0 •   Jul 2020 - Apr 2021</p>
-                            </Column>
-                        </Row>
-
-                        <Row>
-                            <Column left>
-                                <Bullet/>
-                                <Divider/>
-                            </Column>
-                            <Column right>
-                                <h3>Design Team Leader</h3>
-                                <p>Codemy HMIF ITB   •   Apr 2020 - Des 2020</p>
-                            </Column>
-                        </Row>
-
-                        <Row>
-                            <Column left>
-                                <Bullet/>
-                            </Column>
-                            <Column right>
-                                <h3>Head of Creative Media</h3>
-                                <p>ITBMUN 2020 • May 2019 - Feb 2020</p>
-                            </Column>
-                        </Row>
+                        {this.state.experiences.map(function (experience, i) {
+                            return (
+                                <Row key={'experience-' + i}>
+                                    <Column left>
+                                        <Bullet/>
+                                        { experience.last ? null : experience.title.length > 40 ? <Divider long/> : <Divider /> }
+                                    </Column>
+                                    <Column right>
+                                        <h3>{experience.title}</h3>
+                                        <p>{experience.desc}</p>
+                                    </Column>
+                                </Row>
+                            )
+                        })}
                     </Experiences>
                 </Slide>
             </Container>

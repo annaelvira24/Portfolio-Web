@@ -21,12 +21,10 @@ export const Button = styled.button`
 `;
 
 const ButtonLarge = styled(Button)`
-    width: 29%;
-    max-width: 360px;
+    width: 32%;
     min-height: 136px;
     font-size: 36px;
     font-weight: 700;
-    margin-right: 40px;
 
     a{
         color: white;
@@ -37,7 +35,6 @@ const ButtonLarge = styled(Button)`
         margin-bottom: 10px;
         width: 30%;
         height: 180px;
-        min-width: 170px;
         font-size: 24px;
         margin-right: 20px;
     }
@@ -53,6 +50,8 @@ const ButtonLarge = styled(Button)`
 
 const Row = styled.div`
     display: flex;
+    width: 100%;
+    justify-content: center;
 
     @media only screen and (max-width: 1060px){
         flex-direction: column;
@@ -64,15 +63,16 @@ const Row = styled.div`
 `;
 
 const Column = styled.div`
-    flex-basis: ${props => props.left ? '40%' : '60%'};
     display: flex;
-    width: 100%;
     text-align: ${props => props.left ? 'center' : 'left'};
+    margin-left ${props => props.left ? '0.5em' : ''};
+    margin-right: ${props => props.left ? '1.5em' : ''};
     justify-content: center;
     align-items: center;
 
     @media only screen and (max-width: 1060px){
         flex-basis: 50%;
+        margin: 0;
         text-align: center;
         padding-bottom: ${props => props.left ? '10px' : '0'};
     }

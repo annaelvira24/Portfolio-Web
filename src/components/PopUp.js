@@ -91,10 +91,6 @@ const Button = styled.button`
 `;
 
 export class ModalPopUp extends React.Component{
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         if (!this.props.open) {
             return null;
@@ -103,6 +99,7 @@ export class ModalPopUp extends React.Component{
         return(
             <ModalLayout
                 isOpen = {true}
+                closeTimeoutMS={2000}
                 ariaHideApp={false}
                 style={{
                 overlay: {
@@ -130,12 +127,12 @@ export class ModalPopUp extends React.Component{
                     <div className="container">
                         <Row>
                             <ImageContainer>
-                                <img src={this.props.image}/>
+                                <img src={this.props.image} alt="portfolio"/>
                                 <ButtonContainer>
                                     <Button 
                                         style = {{display: this.props.button ? "block" : "none"}}
                                         onClick = { () => (window.location.href = this.props.link)}>
-                                            {this.props.buttonText}
+                                            Go to GitHub
                                     </Button>
                                     <Button secondary onClick = {this.props.toggleModal}>Close</Button>
                                 </ButtonContainer>

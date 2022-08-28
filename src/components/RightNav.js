@@ -69,15 +69,6 @@ const Ul = styled.ul`
             opacity: 0.8;
         }
     }
-
-    // a{
-    //   color: #fff;
-        
-    //   &:hover{
-    //     color: white;
-    //     opacity: 0.8;
-    //   }
-    // }
   }
 `;
 
@@ -101,14 +92,46 @@ const NavBarChild = styled(Link)`
   }
 `
 
+const navMenu = [
+  {
+    path: '/',
+    text: 'Home'
+  },
+  {
+    path: '/about',
+    text: 'About Me',
+    key: 'about'
+  },
+  {
+    path: '/portfolio',
+    text: 'Portfolio',
+    key: 'portfolio'
+  },
+  {
+    path: '/other',
+    text: 'Other Links',
+    key: 'other'
+  },
+]
+
 const RightNav = ({ open, scrolled, active }) => {
   return (
     <div>
         <Ul open={open} scrolled={scrolled}>
-            <li> <NavBarChild to ='/' scrolled={scrolled}>Home</NavBarChild></li>
-            <li> <NavBarChild to ='/about' scrolled={scrolled} active = {active == "about"}>About Me</NavBarChild></li>
-            <li> <NavBarChild to ='/portfolio' scrolled={scrolled} active = {active == "portfolio"}>Portfolio</NavBarChild></li>
-            <li> <NavBarChild to ='/other' scrolled={scrolled} active = {active == "other"}>Other Links</NavBarChild></li>
+          { navMenu.map(function(nav) {
+            return (
+              <li>
+                <NavBarChild
+                  key={nav.key}
+                  to ={nav.path}
+                  scrolled={scrolled}
+                  active = {active === nav.key}
+                >
+                  {nav.text}
+                </NavBarChild>
+              </li>
+            )
+          })}
         </Ul>
         <Overlay open={open}/>
     </div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TabGroup } from "./../components/Tabs"; 
+import TabGroup from "../components/TabGroup"; 
 import { Title, SubTitle } from '../components/Text';
 import { Footer } from '../components/Footer';
+import { ModalPopUp } from '../components/PopUp';
 import NavBar from '../components/NavBar';
 import Slide from 'react-reveal/Slide';
 
@@ -26,8 +27,16 @@ class Portfolio extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            scrolled: false
+            scrolled: false,
+            openModal: false,
+            modal : {
+                image: null,
+                link: ''
+            }
         }
+
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
     componentDidMount() {
         document.addEventListener("scroll", () => {
@@ -35,7 +44,21 @@ class Portfolio extends React.Component{
     
           this.setState({ scrolled: isScroll });
         });
-      }
+    }
+
+    toggleModal() {
+        this.setState({openModal: !this.state.openModal })
+    }
+
+    handleSelect (content) {
+        this.toggleModal()
+        let newState = this.state.modal
+        newState = {
+            image: content.image,
+            link: content.link
+        }
+        this.setState({ modal: newState})
+    }
 
     render(){
         return(
@@ -48,11 +71,17 @@ class Portfolio extends React.Component{
                     <Slide bottom>
                         <Title>Portfolio</Title>
                         <SubTitle>Meet my projects</SubTitle>
-                        <TabGroup/>
+                        <TabGroup selectContent = {this.handleSelect} />
                     </Slide>
                 </Container>
+                <ModalPopUp
+                    open={this.state.openModal}
+                    toggleModal={this.toggleModal}
+                    image={this.state.modal.image}
+                    link={this.state.modal.link}
+                    button={this.state.modal.link ? true : false}
+                />
                 <Footer/>
-                
             </div>
         )
     }

@@ -11,6 +11,10 @@ import Fade from 'react-reveal/Fade';
 
 const Container = styled.div`
     margin: 30px 60px 10px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90vh;
 
     @media only screen and (max-width: 600px){
         margin: 30px 10px 10px 10px;
@@ -139,11 +143,46 @@ const ButtonsContainer = styled.div`
 `;
 
 class HomePage extends React.Component{
-  
+    constructor (props) {
+        super (props)
+        this.state = {
+            contacts: [
+                {
+                    link: 'mailto:naelvirahart@gmail.com',
+                    icon: faEnvelopeSquare
+                },
+                {
+                    link: 'https://github.com/annaelvira24',
+                    icon: faGithubSquare
+                },
+                {
+                    link: 'https://id.linkedin.com/in/annaelvira24',
+                    icon: faLinkedin
+                }
+            ],
+            menu: [
+                {
+                    path: '/about',
+                    icon: faUserCircle,
+                    text: 'ABOUT ME' 
+                },
+                {
+                    path: '/portfolio',
+                    icon: faCopy,
+                    text: 'PORT FOLIO' 
+                },
+                {
+                    path: '/other',
+                    icon: faGlobe,
+                    text: 'OTHER LINKS' 
+                },
+            ]
+        }
+    }
     render(){
         return(
-            <Container>
-                <Fade>
+            <Fade>
+                <Container>
                     <Hero>
                         <div className="title">
                             <h1 style = {{marginTop: "70px"}}>Hello. I'm Anna.</h1>
@@ -158,28 +197,40 @@ class HomePage extends React.Component{
                             />
                             </div>
                             <ContactsContainer>
-                                <a href="mailto:naelvirahart@gmail.com" target="blank">
-                                    <FontAwesomeIcon icon={faEnvelopeSquare} className="fa-icon" onClick={"www.google.com"}/>
-                                </a>
-                                <a href="https://github.com/annaelvira24" target="blank">
-                                    <FontAwesomeIcon icon={faGithubSquare} className="fa-icon"/>
-                                </a>
-                                <a href="https://id.linkedin.com/in/annaelvira24" target="blank">
-                                    <FontAwesomeIcon icon={faLinkedin} className="fa-icon"/>
-                                </a>
+                                {this.state.contacts.map(function(contact, i){
+                                    return (
+                                        <a
+                                            href={contact.link}
+                                            target="blank"
+                                            key={'contacts-' + i}
+                                        >
+                                            <FontAwesomeIcon
+                                                icon={contact.icon}
+                                                className="fa-icon"
+                                            />
+                                        </a>
+                                    );
+                                })}
                             </ContactsContainer>
                         </div>
                         <div className="image">
-                            <img src={avatar}/>
+                            <img src={avatar} alt="avatar"/>
                         </div>
                     </Hero>
                     <ButtonsContainer>
-                        <ButtonHomePage location={"/about"} icon={faUserCircle} text={"ABOUT    ME"}/>
-                        <ButtonHomePage location={"/portfolio"} icon={faCopy} text={"PORT FOLIO"}/>
-                        <ButtonHomePage location={"/other"} icon={faGlobe} text={"OTHER LINKS"}/>
+                        { this.state.menu.map(function(menu, i) {
+                            return ( 
+                                <ButtonHomePage
+                                    key={'menu-' + i}
+                                    location={menu.path}
+                                    icon={menu.icon}
+                                    text={menu.text}
+                                />
+                            )
+                        })}
                     </ButtonsContainer>
-                </Fade>
-            </Container>    
+                </Container>
+            </Fade>
         )
     }
 }

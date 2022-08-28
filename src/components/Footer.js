@@ -40,23 +40,43 @@ const ContactsContainer = styled.div`
     }
 `;
 
+const contacts= [
+    {
+        link: 'mailto:naelvirahart@gmail.com',
+        icon: faEnvelopeSquare
+    },
+    {
+        link: 'https://github.com/annaelvira24',
+        icon: faGithubSquare
+    },
+    {
+        link: 'https://id.linkedin.com/in/annaelvira24',
+        icon: faLinkedin
+    }
+]
+
 export function Footer(){
     return(
         <FooterContainer>
             <ContactsContainer>
-                <a href="mailto:naelvirahart@gmail.com" target="blank">
-                    <FontAwesomeIcon icon={faEnvelopeSquare} className="fa-icon" onClick={()=>window.open("mailto:naelvirahart@gmail.com")}/>
-                </a>
-                <a href="https://github.com/annaelvira24" target="blank">
-                    <FontAwesomeIcon icon={faGithubSquare} className="fa-icon"/>
-                </a>
-                <a href="https://id.linkedin.com/in/annaelvira24" target="blank">
-                    <FontAwesomeIcon icon={faLinkedin} className="fa-icon"/>
-                </a>
+                { contacts.map(function(contact, i) {
+                    return (
+                        <a
+                            key={'contact-footer-' + i}
+                            href={contact.link}
+                            target="blank"
+                        >
+                            <FontAwesomeIcon
+                                icon={contact.icon}
+                                className="fa-icon"
+                            />
+                        </a>
+                    )
+                })}
             </ContactsContainer>
             <br/>
             <p>
-                Anna Elvira Hartoyo  •  2021
+                Anna Elvira Hartoyo  •  2022
             </p>
         </FooterContainer>
     )

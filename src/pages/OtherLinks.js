@@ -27,23 +27,30 @@ const Container = styled.div`
 const Row = styled.div`
     display: flex;
     margin-bottom: 10px;
-
-    @media only screen and (max-width: 800px){
-        flex-direction: ${({ main }) => main ? 'column' : 'row'};
-        justify-content: flex-start;
-    }
+    justify-content: flex-start;
 `
 
 const Column = styled.div`
     margin-left: 0px;
     margin-right: 10px;
-    flex-basis: 50%;
+`;
 
-    @media only screen and (max-width: 768px){
-        ${({ main }) => main && `
-            margin-bottom: 20px;
-        `
+const Wrapper = styled.div`
+    max-height: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    @media only screen and (max-width: 1060px){
+        flex-direction: row;
+        width: 100%;
+        max-height: 100%;
+        heigth: 100%;
     }
+`;
+
+const Item = styled.div`
+    margin: 0 8% 30px 0;
 `;
 
 const SocialIcon = styled.div`
@@ -103,8 +110,8 @@ const Image = styled.img`
     border-radius: 5px;
     margin-bottom: 10px;
 
-    @media only screen and (max-width: 600px){
-        max-width: 100%;
+    @media only screen and (max-width: 1060px){
+        max-width: 100% !important;
     }
 `;
 
@@ -112,7 +119,32 @@ class Other extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            scrolled: false
+            scrolled: false,
+            links: [
+                {
+                    icon: faInstagramSquare,
+                    title: 'Follow my daily cooks',
+                    linkText: 'instagram.com/annalelahngoding',
+                    link: 'https://www.instagram.com/annalelahngoding/',
+                    image: Ig
+                },
+                {
+                    icon: faLine,
+                    title: 'Explore My Sticker Sets',
+                    linkText: 'store.line.me/stickershop/author/61052',
+                    link: 'https://store.line.me/stickershop/author/61052/',
+                    image: Sticker,
+                    imageStyle: {maxWidth: "55%", maxHeight: "700px"}
+                },
+                {
+                    icon: faBehanceSquare,
+                    title: 'Find My Design Stuffs',
+                    linkText: 'behance.net/annahartoyo',
+                    link: 'https://www.behance.net/annahartoyo',
+                    image: Behance,
+                    imageStyle: {maxWidth: "55%", maxHeight: "700px"}
+                }
+            ]
         }
     }
     componentDidMount() {
@@ -132,86 +164,40 @@ class Other extends React.Component{
                 />
                 <Container>
                     <Slide bottom>
-                    <Title>
-                        Other Links
-                    </Title>
-                    <Row main = {true}>
-                        <Column main = {true} style={{flexBasis:"40%"}}>
-                            <Row>
-                                <Column style = {{flexBasis: "10%"}}>
-                                    <SocialIcon>
-                                        <a href="" target="blank">
-                                            <FontAwesomeIcon icon={faInstagramSquare} className="fa-icon"/>
-                                        </a>
-                                    </SocialIcon>
-                                </Column>
+                        <Title>
+                            Other Links
+                        </Title>
+                        <Wrapper>
+                            { this.state.links.map(function(link, i) {
+                                return (
+                                    <Item key={'link-' + i}>
+                                        <Row>
+                                            <Column>
+                                                <SocialIcon>
+                                                    <a href={link.link} target="blank">
+                                                        <FontAwesomeIcon icon={link.icon} className="fa-icon"/>
+                                                    </a>
+                                                </SocialIcon>
+                                            </Column>
 
-                                <Column style = {{flexBasis: "90%"}}>
-                                    <SocialTitle>
-                                        Follow my daily cooks
-                                    </SocialTitle>
-                                    <SocialLink>
-                                        <a>
-                                            Coming soon!
-                                        </a>
-                                    </SocialLink>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Image style = {{maxWidth: "80%"}} src={Ig}/>
-                            </Row>
-                        </Column>
-
-                        <Column main = {true} style={{flexBasis:"60%"}}>
-                            <Row>
-                                <Column  style = {{flexBasis: "10%"}}>
-                                    <SocialIcon>
-                                        <a href="https://store.line.me/stickershop/author/61052/" target="blank">
-                                            <FontAwesomeIcon icon={faLine} className="fa-icon"/>
-                                        </a>
-                                    </SocialIcon>
-                                </Column>
-
-                                <Column style = {{flexBasis: "90%"}}>
-                                    <SocialTitle>
-                                        Explore My Sticker Sets
-                                    </SocialTitle>
-                                    <SocialLink>
-                                        <a href="https://store.line.me/stickershop/author/61052/en" target="blank">
-                                            store.line.me/stickershop/author/61052
-                                        </a>
-                                    </SocialLink>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Image src={Sticker}/>
-                            </Row>
-
-                            <Row style = {{marginTop: "20px"}}>
-                                <Column  style = {{flexBasis: "10%"}}>
-                                    <SocialIcon>
-                                        <a href="https://www.behance.net/annahartoyo" target="blank">
-                                            <FontAwesomeIcon icon={faBehanceSquare} className="fa-icon"/>
-                                        </a>
-                                    </SocialIcon>
-                                </Column>
-
-                                <Column style = {{flexBasis: "90%"}}>
-                                    <SocialTitle>
-                                        Find my design stuffs
-                                    </SocialTitle>
-                                    <SocialLink>
-                                        <a href="https://www.behance.net/annahartoyo" target="blank">
-                                            behance.net/annahartoyo
-                                        </a>
-                                    </SocialLink>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Image src={Behance}/>
-                            </Row>
-                        </Column>
-                    </Row>
+                                            <Column>
+                                                <SocialTitle>
+                                                    {link.title}
+                                                </SocialTitle>
+                                                <SocialLink>
+                                                    <a href={link.link} target="blank">
+                                                        {link.linkText}
+                                                    </a>
+                                                </SocialLink>
+                                            </Column>
+                                        </Row>
+                                        <Row>
+                                            <Image style = {link.imageStyle} src={link.image}/>
+                                        </Row>
+                                    </Item>
+                                )
+                            })}
+                        </Wrapper>                    
                     </Slide>
                 </Container>
                 <Footer/>
